@@ -25,10 +25,10 @@ class SiteGenerationTests(unittest.TestCase):
             self.assertIn("Repeat word", html)
             self.assertIn("Show word", html)
             self.assertIn("Restart", html)
+            self.assertIn("autoRepeat: true", (out / "app.js").read_text(encoding="utf-8"))
             self.assertEqual(data[0]["audio"], "audio/01_fungus.mp3")
             self.assertEqual(data[1]["word"], "cactus")
 
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -2,7 +2,7 @@ const state = {
   words: [],
   currentIndex: 0,
   showingWord: false,
-  autoRepeat: false,
+  autoRepeat: true,
   repeatTimer: null,
   audio: null,
 };
@@ -111,6 +111,12 @@ function playCurrentWord() {
   els.status.textContent = "";
 }
 
+function playAfterNavigationIfNeeded() {
+  if (state.autoRepeat) {
+    playCurrentWord();
+  }
+}
+
 function goBack() {
   if (state.currentIndex === 0) {
     return;
@@ -119,6 +125,7 @@ function goBack() {
   state.currentIndex -= 1;
   state.showingWord = false;
   renderTest();
+  playAfterNavigationIfNeeded();
 }
 
 function goNext() {
@@ -130,6 +137,7 @@ function goNext() {
   state.currentIndex += 1;
   state.showingWord = false;
   renderTest();
+  playAfterNavigationIfNeeded();
 }
 
 els.start.addEventListener("click", playCurrentWord);
@@ -142,17 +150,23 @@ els.toggleWord.addEventListener("click", () => {
 });
 els.autoRepeat.addEventListener("click", () => {
   state.autoRepeat = !state.autoRepeat;
+  stopAudio();
   renderTest();
+  playAfterNavigationIfNeeded();
 });
 els.restart.addEventListener("click", () => {
+  stopAudio();
   state.currentIndex = 0;
   state.showingWord = false;
   renderTest();
+  playAfterNavigationIfNeeded();
 });
 els.finishBack.addEventListener("click", () => {
+  stopAudio();
   state.currentIndex = Math.max(0, state.words.length - 1);
   state.showingWord = false;
   renderTest();
+  playAfterNavigationIfNeeded();
 });
 
 loadWords();
