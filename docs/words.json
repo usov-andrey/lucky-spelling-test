@@ -1,0 +1,92 @@
+[
+  {
+    "index": 1,
+    "word": "fungus",
+    "audio": "audio/01_fungus.wav"
+  },
+  {
+    "index": 2,
+    "word": "cactus",
+    "audio": "audio/02_cactus.wav"
+  },
+  {
+    "index": 3,
+    "word": "virus",
+    "audio": "audio/03_virus.wav"
+  },
+  {
+    "index": 4,
+    "word": "focus",
+    "audio": "audio/04_focus.wav"
+  },
+  {
+    "index": 5,
+    "word": "minus",
+    "audio": "audio/05_minus.wav"
+  },
+  {
+    "index": 6,
+    "word": "album",
+    "audio": "audio/06_album.wav"
+  },
+  {
+    "index": 7,
+    "word": "medium",
+    "audio": "audio/07_medium.wav"
+  },
+  {
+    "index": 8,
+    "word": "careful",
+    "audio": "audio/08_careful.wav"
+  },
+  {
+    "index": 9,
+    "word": "difficult",
+    "audio": "audio/09_difficult.wav"
+  },
+  {
+    "index": 10,
+    "word": "success",
+    "audio": "audio/10_success.wav"
+  },
+  {
+    "index": 11,
+    "word": "genius",
+    "audio": "audio/11_genius.wav"
+  },
+  {
+    "index": 12,
+    "word": "volunteer",
+    "audio": "audio/12_volunteer.wav"
+  },
+  {
+    "index": 13,
+    "word": "maximum",
+    "audio": "audio/13_maximum.wav"
+  },
+  {
+    "index": 14,
+    "word": "minimum",
+    "audio": "audio/14_minimum.wav"
+  },
+  {
+    "index": 15,
+    "word": "beautiful",
+    "audio": "audio/15_beautiful.wav"
+  },
+  {
+    "index": 16,
+    "word": "thesaurus",
+    "audio": "audio/16_thesaurus.wav"
+  },
+  {
+    "index": 17,
+    "word": "instrument",
+    "audio": "audio/17_instrument.wav"
+  },
+  {
+    "index": 18,
+    "word": "hippopotamus",
+    "audio": "audio/18_hippopotamus.wav"
+  }
+]

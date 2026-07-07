@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lucky-spelling"
+version = "0.1.0"
+description = "Generate and deploy a static Lucky Spelling Test site."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Personal Longevity System" }]
+dependencies = []
+
+[project.optional-dependencies]
+tts = [
+  "edge-tts>=6.1.0",
+  "gTTS>=2.5.0",
+  "pyttsx3>=2.90",
+]
+ocr = [
+  "pytesseract>=0.3.10",
+  "Pillow>=10.0.0",
+]
+dev = [
+  "pytest>=8.0.0",
+]
+
+[project.scripts]
+lucky-spelling = "lucky_spelling.cli:main"
+
+[tool.setuptools]
+packages = ["lucky_spelling"]
+
