@@ -7,15 +7,29 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div class="stage-glow stage-glow-left" aria-hidden="true"></div>
+    <div class="stage-glow stage-glow-right" aria-hidden="true"></div>
     <main class="app" aria-live="polite">
       <section id="test-screen" class="screen">
+        <div class="lights" aria-hidden="true">
+          <span class="light light-red"></span>
+          <span class="light light-gold"></span>
+          <span class="light light-blue"></span>
+        </div>
+
         <header class="header">
+          <p class="eyebrow">Pokemon Concert Mode</p>
           <h1>Lucky Spelling Test</h1>
           <p id="progress" class="progress">Word 1 of 1</p>
         </header>
 
         <p class="prompt">Listen and write the word</p>
         <p id="word" class="word hidden-word" aria-live="polite"></p>
+
+        <div class="speaker-row" aria-hidden="true">
+          <span class="speaker speaker-left"></span>
+          <span class="speaker speaker-right"></span>
+        </div>
 
         <div class="controls primary-controls">
           <button id="next" type="button">Next</button>
@@ -35,7 +49,14 @@
       </section>
 
       <section id="finish-screen" class="screen is-hidden">
+        <div class="lights" aria-hidden="true">
+          <span class="light light-red"></span>
+          <span class="light light-gold"></span>
+          <span class="light light-blue"></span>
+        </div>
+
         <header class="header">
+          <p class="eyebrow">Encore</p>
           <h1>Great job!</h1>
           <p class="prompt">Here are all the words:</p>
         </header>

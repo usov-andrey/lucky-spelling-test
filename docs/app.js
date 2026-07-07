@@ -103,7 +103,7 @@ function playCurrentWord() {
     }
   };
   state.audio.play().catch(() => {
-    els.status.textContent = "Tap Start again if the browser blocked sound.";
+    els.status.textContent = "Tap Repeat word or Restart if the browser blocked sound.";
   });
   els.status.textContent = "";
 }
