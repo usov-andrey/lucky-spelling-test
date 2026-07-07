@@ -175,6 +175,21 @@ h1 {
   font-weight: 700;
 }
 
+.hero-art {
+  margin: 18px 0 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid rgba(29, 35, 64, 0.08);
+  box-shadow: 0 12px 22px rgba(31, 43, 77, 0.14);
+}
+
 .speaker-row {
   display: flex;
   justify-content: space-between;
