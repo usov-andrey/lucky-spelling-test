@@ -18,17 +18,16 @@
         <p id="word" class="word hidden-word" aria-live="polite"></p>
 
         <div class="controls primary-controls">
-          <button id="start" type="button">Start</button>
-          <button id="repeat" type="button">Repeat word</button>
-        </div>
-
-        <div class="controls">
-          <button id="back" type="button">Back</button>
           <button id="next" type="button">Next</button>
+          <button id="back" type="button">Back</button>
         </div>
 
         <div class="controls">
-          <button id="toggle-word" type="button">Show word</button>
+          <button id="repeat" type="button">Repeat word</button>
+          <button id="restart" type="button">Restart</button>
+        </div>
+
+        <div class="controls single-control">
           <button id="auto-repeat" type="button" aria-pressed="false">Auto-repeat: Off</button>
         </div>
 
@@ -42,7 +41,7 @@
         </header>
         <ol id="word-list" class="word-list"></ol>
         <div class="controls">
-          <button id="restart" type="button">Restart</button>
+          <button id="finish-restart" type="button">Restart</button>
           <button id="finish-back" type="button">Back</button>
         </div>
       </section>
@@ -51,4 +50,3 @@
     <script src="app.js"></script>
   </body>
 </html>
-

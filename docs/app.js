@@ -1,7 +1,6 @@
 const state = {
   words: [],
   currentIndex: 0,
-  showingWord: false,
   autoRepeat: true,
   repeatTimer: null,
   audio: null,
@@ -12,15 +11,14 @@ const els = {
   finishScreen: document.getElementById("finish-screen"),
   progress: document.getElementById("progress"),
   word: document.getElementById("word"),
-  start: document.getElementById("start"),
   repeat: document.getElementById("repeat"),
   back: document.getElementById("back"),
   next: document.getElementById("next"),
-  toggleWord: document.getElementById("toggle-word"),
+  restart: document.getElementById("restart"),
   autoRepeat: document.getElementById("auto-repeat"),
   status: document.getElementById("status"),
   wordList: document.getElementById("word-list"),
-  restart: document.getElementById("restart"),
+  finishRestart: document.getElementById("finish-restart"),
   finishBack: document.getElementById("finish-back"),
 };
 
@@ -53,9 +51,8 @@ function renderTest() {
   els.testScreen.classList.remove("is-hidden");
   els.finishScreen.classList.add("is-hidden");
   els.progress.textContent = `Word ${state.currentIndex + 1} of ${state.words.length}`;
-  els.word.textContent = state.showingWord ? word.word : "";
-  els.word.classList.toggle("hidden-word", !state.showingWord);
-  els.toggleWord.textContent = state.showingWord ? "Hide word" : "Show word";
+  els.word.textContent = "";
+  els.word.classList.add("hidden-word");
   els.back.disabled = state.currentIndex === 0;
   els.next.textContent = state.currentIndex === state.words.length - 1 ? "Finish" : "Next";
   els.autoRepeat.textContent = state.autoRepeat ? "Auto-repeat: On" : "Auto-repeat: Off";
@@ -75,7 +72,7 @@ function renderFinish() {
 }
 
 function disableButtons(disabled) {
-  [els.start, els.repeat, els.back, els.next, els.toggleWord, els.autoRepeat].forEach((button) => {
+  [els.repeat, els.restart, els.back, els.next, els.autoRepeat].forEach((button) => {
     button.disabled = disabled;
   });
 }
@@ -123,7 +120,6 @@ function goBack() {
   }
   stopAudio();
   state.currentIndex -= 1;
-  state.showingWord = false;
   renderTest();
   playAfterNavigationIfNeeded();
 }
@@ -135,36 +131,31 @@ function goNext() {
     return;
   }
   state.currentIndex += 1;
-  state.showingWord = false;
   renderTest();
   playAfterNavigationIfNeeded();
 }
 
-els.start.addEventListener("click", playCurrentWord);
+function restartToFirst() {
+  stopAudio();
+  state.currentIndex = 0;
+  renderTest();
+  playAfterNavigationIfNeeded();
+}
+
 els.repeat.addEventListener("click", playCurrentWord);
 els.back.addEventListener("click", goBack);
 els.next.addEventListener("click", goNext);
-els.toggleWord.addEventListener("click", () => {
-  state.showingWord = !state.showingWord;
-  renderTest();
-});
+els.restart.addEventListener("click", restartToFirst);
 els.autoRepeat.addEventListener("click", () => {
   state.autoRepeat = !state.autoRepeat;
   stopAudio();
   renderTest();
   playAfterNavigationIfNeeded();
 });
-els.restart.addEventListener("click", () => {
-  stopAudio();
-  state.currentIndex = 0;
-  state.showingWord = false;
-  renderTest();
-  playAfterNavigationIfNeeded();
-});
+els.finishRestart.addEventListener("click", restartToFirst);
 els.finishBack.addEventListener("click", () => {
   stopAudio();
   state.currentIndex = Math.max(0, state.words.length - 1);
-  state.showingWord = false;
   renderTest();
   playAfterNavigationIfNeeded();
 });
