@@ -1,4 +1,4 @@
-const ASSET_VERSION = "page22-20260718-1";
+const ASSET_VERSION = "page22-20260718-2";
 
 const state = {
   lesson: null,
