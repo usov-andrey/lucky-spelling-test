@@ -29,6 +29,7 @@ def write_site(
     _copy_template("index.html", out / "index.html")
     _copy_template("styles.css", out / "styles.css")
     _copy_template("app.js", out / "app.js")
+    _copy_template_directory("pokemon", out / "pokemon")
 
     lesson_data = lesson or {}
     lesson_words = lesson_data.get("words", [])
@@ -90,3 +91,10 @@ def _copy_template(name: str, destination: Path) -> None:
     if not source.exists():
         raise FileNotFoundError(f"Missing template: {source}")
     shutil.copyfile(source, destination)
+
+
+def _copy_template_directory(name: str, destination: Path) -> None:
+    source = TEMPLATE_DIR / name
+    if not source.is_dir():
+        raise FileNotFoundError(f"Missing template directory: {source}")
+    shutil.copytree(source, destination, dirs_exist_ok=True)

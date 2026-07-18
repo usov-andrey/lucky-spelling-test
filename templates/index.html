@@ -6,191 +6,101 @@
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <title>Lucky Spelling Test</title>
-    <link rel="stylesheet" href="styles.css?v=page22-20260718-2">
+    <link rel="stylesheet" href="styles.css?v=pokemon-modes-20260718-1">
   </head>
   <body>
-    <div class="stage-glow stage-glow-left" aria-hidden="true"></div>
-      <div class="stage-glow stage-glow-right" aria-hidden="true"></div>
-      <main class="app" aria-live="polite">
+    <main class="app" aria-live="polite">
       <section id="intro-screen" class="screen intro-screen">
-        <div class="lights" aria-hidden="true">
-          <span class="light light-red"></span>
-          <span class="light light-gold"></span>
-          <span class="light light-blue"></span>
+        <div class="pokemon-lineup" aria-label="Pikachu, Eevee, Bulbasaur, Charmander, and Squirtle">
+          <img src="pokemon/bulbasaur.png?v=pokemon-modes-20260718-1" alt="Bulbasaur">
+          <img src="pokemon/eevee.png?v=pokemon-modes-20260718-1" alt="Eevee">
+          <img class="lineup-star" src="pokemon/pikachu.png?v=pokemon-modes-20260718-1" alt="Pikachu">
+          <img src="pokemon/charmander.png?v=pokemon-modes-20260718-1" alt="Charmander">
+          <img src="pokemon/squirtle.png?v=pokemon-modes-20260718-1" alt="Squirtle">
         </div>
-        <header class="header intro-header">
-          <p class="eyebrow">Ready for the show?</p>
-          <h1 id="intro-title">Lucky Spelling Test</h1>
-          <p id="intro-topic" class="intro-topic">Schwa ‹or›</p>
+
+        <header class="intro-header">
+          <p class="eyebrow">Choose your adventure</p>
+          <h1 id="intro-title">Lucky Spelling</h1>
+          <p id="intro-topic" class="intro-topic">Listen, learn, and spell</p>
         </header>
-        <div class="intro-note" aria-hidden="true">🎤 ⭐ 🎶</div>
-        <button id="start" class="start-button" type="button">Start</button>
-        <p class="start-hint">Tap Start to hear the first word</p>
+
+        <div class="mode-grid" aria-label="Choose a mode">
+          <button id="choose-learn" class="mode-card mode-learn" type="button">
+            <span class="mode-icon" aria-hidden="true">📖</span>
+            <span class="mode-copy">
+              <strong>Learn</strong>
+              <small>See the word and discover its meaning</small>
+            </span>
+          </button>
+          <button id="choose-test" class="mode-card mode-test" type="button">
+            <span class="mode-icon pokeball-icon" aria-hidden="true"></span>
+            <span class="mode-copy">
+              <strong>Test</strong>
+              <small>Listen and spell without seeing the word</small>
+            </span>
+          </button>
+        </div>
       </section>
 
-      <section id="test-screen" class="screen is-hidden">
-        <div class="lights" aria-hidden="true">
-          <span class="light light-red"></span>
-          <span class="light light-gold"></span>
-          <span class="light light-blue"></span>
-        </div>
-
-        <header class="header">
-          <p class="eyebrow">Listen and spell</p>
-          <p id="progress" class="progress">Word 1 of 1</p>
+      <section id="practice-screen" class="screen practice-screen is-hidden">
+        <header class="practice-header">
+          <button id="change-mode" class="quiet-button" type="button">← Modes</button>
+          <p id="progress" class="progress">1 of 1</p>
         </header>
 
-        <figure class="hero-art" aria-hidden="true">
-          <svg viewBox="0 0 640 280" role="img" focusable="false">
-            <defs>
-              <linearGradient id="stageSky" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#20376d" />
-                <stop offset="100%" stop-color="#0f1c37" />
-              </linearGradient>
-              <linearGradient id="stageFloor" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#ffd45c" />
-                <stop offset="100%" stop-color="#f0ac2e" />
-              </linearGradient>
-              <linearGradient id="spotRed" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#ff7b6d" stop-opacity="0.95" />
-                <stop offset="100%" stop-color="#ff7b6d" stop-opacity="0" />
-              </linearGradient>
-              <linearGradient id="spotBlue" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#6ac0ff" stop-opacity="0.95" />
-                <stop offset="100%" stop-color="#6ac0ff" stop-opacity="0" />
-              </linearGradient>
-              <linearGradient id="spotGold" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#fff0a0" stop-opacity="0.98" />
-                <stop offset="100%" stop-color="#fff0a0" stop-opacity="0" />
-              </linearGradient>
-            </defs>
-
-            <rect width="640" height="220" fill="url(#stageSky)" />
-            <rect y="220" width="640" height="60" fill="url(#stageFloor)" />
-
-            <polygon points="90,42 170,42 130,200" fill="url(#spotRed)" />
-            <polygon points="262,28 378,28 320,224" fill="url(#spotGold)" />
-            <polygon points="470,42 550,42 510,200" fill="url(#spotBlue)" />
-
-            <circle cx="94" cy="52" r="18" fill="#e5443a" />
-            <circle cx="320" cy="40" r="18" fill="#ffcb43" />
-            <circle cx="546" cy="52" r="18" fill="#2f78d4" />
-
-            <rect x="40" y="176" width="70" height="84" rx="10" fill="#1b2340" />
-            <rect x="530" y="176" width="70" height="84" rx="10" fill="#1b2340" />
-            <circle cx="75" cy="205" r="15" fill="#303956" />
-            <circle cx="75" cy="235" r="19" fill="#303956" />
-            <circle cx="565" cy="205" r="15" fill="#303956" />
-            <circle cx="565" cy="235" r="19" fill="#303956" />
-
-            <g transform="translate(168 114)">
-              <ellipse cx="0" cy="92" rx="58" ry="22" fill="rgba(10,18,36,0.24)" />
-              <circle cx="-12" cy="26" r="31" fill="#ffd45c" />
-              <ellipse cx="-40" cy="36" rx="20" ry="26" fill="#ffd45c" />
-              <ellipse cx="14" cy="36" rx="20" ry="26" fill="#ffd45c" />
-              <polygon points="-28,-6 -8,-28 0,2" fill="#1f2948" />
-              <polygon points="6,2 16,-28 34,-4" fill="#1f2948" />
-              <circle cx="-22" cy="24" r="6" fill="#1f2948" />
-              <circle cx="2" cy="24" r="6" fill="#1f2948" />
-              <circle cx="-10" cy="38" r="5" fill="#e5443a" />
-              <rect x="-18" y="56" width="16" height="46" rx="8" fill="#ffd45c" />
-              <rect x="-46" y="76" width="15" height="38" rx="7" fill="#ffd45c" transform="rotate(-18 -46 76)" />
-              <rect x="10" y="70" width="15" height="42" rx="7" fill="#ffd45c" transform="rotate(24 10 70)" />
-              <rect x="-24" y="98" width="15" height="36" rx="7" fill="#ffd45c" transform="rotate(10 -24 98)" />
-              <rect x="-2" y="98" width="15" height="36" rx="7" fill="#ffd45c" transform="rotate(-12 -2 98)" />
-            </g>
-
-            <g transform="translate(320 120)">
-              <ellipse cx="0" cy="88" rx="60" ry="20" fill="rgba(10,18,36,0.22)" />
-              <ellipse cx="0" cy="56" rx="28" ry="44" fill="#e5443a" />
-              <ellipse cx="-34" cy="56" rx="20" ry="34" fill="#e5443a" />
-              <ellipse cx="34" cy="56" rx="20" ry="34" fill="#e5443a" />
-              <circle cx="-12" cy="44" r="6" fill="#1f2948" />
-              <circle cx="12" cy="44" r="6" fill="#1f2948" />
-              <circle cx="0" cy="60" r="4" fill="#1f2948" />
-              <circle cx="0" cy="12" r="10" fill="#ffcb43" />
-              <rect x="-10" y="94" width="20" height="40" rx="8" fill="#e5443a" />
-              <rect x="-32" y="98" width="14" height="36" rx="7" fill="#e5443a" transform="rotate(10 -32 98)" />
-              <rect x="18" y="98" width="14" height="36" rx="7" fill="#e5443a" transform="rotate(-10 18 98)" />
-            </g>
-
-            <g transform="translate(474 116)">
-              <ellipse cx="0" cy="92" rx="58" ry="22" fill="rgba(10,18,36,0.24)" />
-              <circle cx="0" cy="32" r="30" fill="#6ac0ff" />
-              <ellipse cx="-30" cy="50" rx="16" ry="28" fill="#6ac0ff" />
-              <ellipse cx="30" cy="50" rx="16" ry="28" fill="#6ac0ff" />
-              <ellipse cx="-22" cy="0" rx="12" ry="20" fill="#6ac0ff" transform="rotate(-20 -22 0)" />
-              <ellipse cx="22" cy="0" rx="12" ry="20" fill="#6ac0ff" transform="rotate(20 22 0)" />
-              <circle cx="-10" cy="28" r="6" fill="#1f2948" />
-              <circle cx="10" cy="28" r="6" fill="#1f2948" />
-              <circle cx="0" cy="42" r="4" fill="#1f2948" />
-              <rect x="-10" y="60" width="20" height="44" rx="8" fill="#6ac0ff" />
-              <rect x="-34" y="68" width="14" height="40" rx="7" fill="#6ac0ff" transform="rotate(-26 -34 68)" />
-              <rect x="20" y="68" width="14" height="40" rx="7" fill="#6ac0ff" transform="rotate(26 20 68)" />
-              <rect x="-20" y="98" width="14" height="36" rx="7" fill="#6ac0ff" transform="rotate(8 -20 98)" />
-              <rect x="6" y="98" width="14" height="36" rx="7" fill="#6ac0ff" transform="rotate(-8 6 98)" />
-            </g>
-          </svg>
-        </figure>
-
-        <p class="prompt">Listen and write the word</p>
-        <p id="word" class="word hidden-word" aria-live="polite"></p>
-
-        <div class="speaker-row" aria-hidden="true">
-          <span class="speaker speaker-left"></span>
-          <span class="speaker speaker-right"></span>
+        <div class="practice-title">
+          <div>
+            <p id="mode-label" class="eyebrow">Learn mode</p>
+            <h1 id="practice-heading">Learn the word</h1>
+          </div>
+          <img id="buddy-image" class="buddy-image" src="pokemon/pikachu.png?v=pokemon-modes-20260718-1" alt="Pikachu">
         </div>
 
-        <div class="controls primary-controls">
-          <button id="next" type="button">Next</button>
-          <button id="back" type="button">Back</button>
+        <div class="word-card">
+          <p id="prompt" class="prompt">Look, listen, and say it</p>
+          <p id="word" class="word"></p>
+          <button id="repeat" class="listen-button" type="button">
+            <span aria-hidden="true">🔊</span>
+            <span>Hear the word</span>
+          </button>
         </div>
 
-        <div class="controls">
-          <button id="repeat" type="button">Repeat word</button>
-          <button id="learn" type="button">Learn this word</button>
-        </div>
+        <button id="meaning" class="meaning-button" type="button">What does it mean?</button>
 
-        <div class="controls">
-          <button id="restart" type="button">Restart</button>
-          <button id="auto-repeat" type="button" aria-pressed="false">Auto-repeat: Off</button>
+        <div class="navigation" aria-label="Word navigation">
+          <button id="back" class="back-button" type="button">Back</button>
+          <button id="next" class="next-button" type="button">Next</button>
         </div>
-
-        <p id="status" class="status"></p>
+        <p id="status" class="status" role="status"></p>
       </section>
 
-      <section id="finish-screen" class="screen is-hidden">
-        <div class="lights" aria-hidden="true">
-          <span class="light light-red"></span>
-          <span class="light light-gold"></span>
-          <span class="light light-blue"></span>
-        </div>
-
-        <header class="header">
-          <p class="eyebrow">Encore</p>
-          <h1>Great job!</h1>
-          <p class="prompt">Here are all the words:</p>
-        </header>
+      <section id="finish-screen" class="screen finish-screen is-hidden">
+        <img class="finish-pokemon" src="pokemon/jigglypuff.png?v=pokemon-modes-20260718-1" alt="Jigglypuff">
+        <p class="eyebrow">Adventure complete</p>
+        <h1>Great job, Lucky!</h1>
+        <p id="finish-message" class="finish-message">You finished all the words.</p>
         <ol id="word-list" class="word-list"></ol>
-        <div class="controls">
-          <button id="finish-restart" type="button">Restart</button>
-          <button id="finish-back" type="button">Back</button>
+        <div class="finish-actions">
+          <button id="finish-restart" class="next-button" type="button">Do it again</button>
+          <button id="finish-modes" class="quiet-button finish-modes" type="button">Choose another mode</button>
         </div>
       </section>
 
       <dialog id="learn-dialog" class="learn-dialog" aria-labelledby="learn-word">
         <div class="learn-card">
-          <button id="close-learn" class="close-learn" type="button" aria-label="Close learning card">×</button>
-          <p class="eyebrow">Learn this word</p>
+          <button id="close-learn" class="close-learn" type="button" aria-label="Close meaning card">×</button>
+          <p class="eyebrow">Word meaning</p>
           <h2 id="learn-word"></h2>
           <img id="learn-image" class="learn-image" alt="">
           <p id="learn-definition" class="learn-definition"></p>
-          <button id="play-definition" class="play-definition" type="button">▶ Play definition</button>
+          <button id="play-definition" class="play-definition" type="button">🔊 Hear the meaning</button>
           <a id="image-credit" class="image-credit" href="https://openmoji.org/" target="_blank" rel="noopener"></a>
         </div>
       </dialog>
     </main>
 
-    <script src="app.js?v=page22-20260718-2"></script>
+    <footer class="legal-note">Pokémon images © Nintendo / Creatures / GAME FREAK.</footer>
+    <script src="app.js?v=pokemon-modes-20260718-1"></script>
   </body>
 </html>
