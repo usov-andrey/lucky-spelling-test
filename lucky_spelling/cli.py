@@ -4,7 +4,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from .audio import AudioGenerationError, generate_audio_assets
+from .audio import AudioGenerationError, generate_audio_assets, generate_learning_audio_assets
 from .deploy import DeployError, deploy
 from .ocr import OCRError, extract_words_from_image
 from .site import write_site
@@ -76,7 +76,29 @@ def generate_command(args: argparse.Namespace) -> int:
         language=args.language,
     )
     entries = build_entries(words, audio.suffixes)
-    write_site(out, entries)
+    lesson, lesson_dir = load_lesson(args)
+    definition_audio = None
+    if lesson:
+        learning = {
+            str(item["word"]).lower(): str(item["definition"])
+            for item in lesson.get("words", [])
+        }
+        missing = [word for word in words if word not in learning]
+        if missing:
+            raise ValueError("Lesson metadata is missing words: " + ", ".join(missing))
+        definition_audio = generate_learning_audio_assets(
+            [(word, learning[word]) for word in words],
+            out,
+            reuse_audio=args.reuse_audio,
+            language=args.language,
+        )
+    write_site(
+        out,
+        entries,
+        lesson=lesson,
+        lesson_dir=lesson_dir,
+        definition_audio_suffixes=definition_audio.suffixes if definition_audio else None,
+    )
 
     print(f"Generated {out / 'index.html'}")
     print(f"Words: {len(words)}")
@@ -85,6 +107,22 @@ def generate_command(args: argparse.Namespace) -> int:
     if audio.reused:
         print(f"Reused audio: {len(audio.reused)} file(s)")
     return 0
+
+
+def load_lesson(args: argparse.Namespace) -> tuple[dict[str, object] | None, Path | None]:
+    words_path_value = getattr(args, "words", None)
+    if not words_path_value:
+        return None, None
+    words_path = Path(words_path_value)
+    lesson_path = words_path.with_name("lesson.json")
+    if not lesson_path.exists():
+        return None, None
+    import json
+
+    lesson = json.loads(lesson_path.read_text(encoding="utf-8"))
+    if not isinstance(lesson, dict) or not isinstance(lesson.get("words"), list):
+        raise ValueError(f"Invalid lesson metadata: {lesson_path}")
+    return lesson, lesson_path.parent
 
 
 def deploy_command(args: argparse.Namespace) -> int:
@@ -102,4 +140,3 @@ def load_words(args: argparse.Namespace, out: Path) -> list[str]:
     write_words_file(out / "words.txt", words)
     print(f"OCR words saved to {out / 'words.txt'}. Review this file if the photo was unclear.")
     return words
-

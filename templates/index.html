@@ -3,14 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <title>Lucky Spelling Test</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=page22-20260718-1">
   </head>
   <body>
     <div class="stage-glow stage-glow-left" aria-hidden="true"></div>
-    <div class="stage-glow stage-glow-right" aria-hidden="true"></div>
-    <main class="app" aria-live="polite">
-      <section id="test-screen" class="screen">
+      <div class="stage-glow stage-glow-right" aria-hidden="true"></div>
+      <main class="app" aria-live="polite">
+      <section id="intro-screen" class="screen intro-screen">
+        <div class="lights" aria-hidden="true">
+          <span class="light light-red"></span>
+          <span class="light light-gold"></span>
+          <span class="light light-blue"></span>
+        </div>
+        <header class="header intro-header">
+          <p class="eyebrow">Ready for the show?</p>
+          <h1 id="intro-title">Lucky Spelling Test</h1>
+          <p id="intro-topic" class="intro-topic">Schwa ‹or›</p>
+        </header>
+        <div class="intro-note" aria-hidden="true">🎤 ⭐ 🎶</div>
+        <button id="start" class="start-button" type="button">Start</button>
+        <p class="start-hint">Tap Start to hear the first word</p>
+      </section>
+
+      <section id="test-screen" class="screen is-hidden">
         <div class="lights" aria-hidden="true">
           <span class="light light-red"></span>
           <span class="light light-gold"></span>
@@ -18,8 +36,7 @@
         </div>
 
         <header class="header">
-          <p class="eyebrow">Pokemon Concert Mode</p>
-          <h1>Lucky Spelling Test</h1>
+          <p class="eyebrow">Listen and spell</p>
           <p id="progress" class="progress">Word 1 of 1</p>
         </header>
 
@@ -131,10 +148,11 @@
 
         <div class="controls">
           <button id="repeat" type="button">Repeat word</button>
-          <button id="restart" type="button">Restart</button>
+          <button id="learn" type="button">Learn this word</button>
         </div>
 
-        <div class="controls single-control">
+        <div class="controls">
+          <button id="restart" type="button">Restart</button>
           <button id="auto-repeat" type="button" aria-pressed="false">Auto-repeat: Off</button>
         </div>
 
@@ -159,8 +177,20 @@
           <button id="finish-back" type="button">Back</button>
         </div>
       </section>
+
+      <dialog id="learn-dialog" class="learn-dialog" aria-labelledby="learn-word">
+        <div class="learn-card">
+          <button id="close-learn" class="close-learn" type="button" aria-label="Close learning card">×</button>
+          <p class="eyebrow">Learn this word</p>
+          <h2 id="learn-word"></h2>
+          <img id="learn-image" class="learn-image" alt="">
+          <p id="learn-definition" class="learn-definition"></p>
+          <button id="play-definition" class="play-definition" type="button">▶ Play definition</button>
+          <a id="image-credit" class="image-credit" href="https://openmoji.org/" target="_blank" rel="noopener"></a>
+        </div>
+      </dialog>
     </main>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=page22-20260718-1"></script>
   </body>
 </html>

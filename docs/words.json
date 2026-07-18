@@ -1,92 +1,259 @@
-[
-  {
-    "index": 1,
-    "word": "fungus",
-    "audio": "audio/01_fungus.wav"
-  },
-  {
-    "index": 2,
-    "word": "cactus",
-    "audio": "audio/02_cactus.wav"
-  },
-  {
-    "index": 3,
-    "word": "virus",
-    "audio": "audio/03_virus.wav"
-  },
-  {
-    "index": 4,
-    "word": "focus",
-    "audio": "audio/04_focus.wav"
-  },
-  {
-    "index": 5,
-    "word": "minus",
-    "audio": "audio/05_minus.wav"
-  },
-  {
-    "index": 6,
-    "word": "album",
-    "audio": "audio/06_album.wav"
-  },
-  {
-    "index": 7,
-    "word": "medium",
-    "audio": "audio/07_medium.wav"
-  },
-  {
-    "index": 8,
-    "word": "careful",
-    "audio": "audio/08_careful.wav"
-  },
-  {
-    "index": 9,
-    "word": "difficult",
-    "audio": "audio/09_difficult.wav"
-  },
-  {
-    "index": 10,
-    "word": "success",
-    "audio": "audio/10_success.wav"
-  },
-  {
-    "index": 11,
-    "word": "genius",
-    "audio": "audio/11_genius.wav"
-  },
-  {
-    "index": 12,
-    "word": "volunteer",
-    "audio": "audio/12_volunteer.wav"
-  },
-  {
-    "index": 13,
-    "word": "maximum",
-    "audio": "audio/13_maximum.wav"
-  },
-  {
-    "index": 14,
-    "word": "minimum",
-    "audio": "audio/14_minimum.wav"
-  },
-  {
-    "index": 15,
-    "word": "beautiful",
-    "audio": "audio/15_beautiful.wav"
-  },
-  {
-    "index": 16,
-    "word": "thesaurus",
-    "audio": "audio/16_thesaurus.wav"
-  },
-  {
-    "index": 17,
-    "word": "instrument",
-    "audio": "audio/17_instrument.wav"
-  },
-  {
-    "index": 18,
-    "word": "hippopotamus",
-    "audio": "audio/18_hippopotamus.wav"
-  }
-]
+{
+  "title": "Lucky Spelling Test",
+  "pageLabel": "Page 22",
+  "topic": "Schwa ‹or›",
+  "words": [
+    {
+      "index": 1,
+      "word": "author",
+      "audio": "audio/01_author.wav",
+      "definition": "A person who writes books, stories, or articles.",
+      "image": "images/author.svg",
+      "imageAlt": "A hand writing with a pen",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/01_author.wav"
+    },
+    {
+      "index": 2,
+      "word": "error",
+      "audio": "audio/02_error.wav",
+      "definition": "A mistake; something that is not correct.",
+      "image": "images/error.svg",
+      "imageAlt": "A red cross mark showing an error",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/02_error.wav"
+    },
+    {
+      "index": 3,
+      "word": "doctor",
+      "audio": "audio/03_doctor.wav",
+      "definition": "A person who helps sick or injured people get better.",
+      "image": "images/doctor.svg",
+      "imageAlt": "A doctor wearing a stethoscope",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/03_doctor.wav"
+    },
+    {
+      "index": 4,
+      "word": "motor",
+      "audio": "audio/04_motor.wav",
+      "definition": "A machine that makes something move.",
+      "image": "images/motor.svg",
+      "imageAlt": "A mechanical gear representing a motor",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/04_motor.wav"
+    },
+    {
+      "index": 5,
+      "word": "actor",
+      "audio": "audio/05_actor.wav",
+      "definition": "A person who performs a character in a play, film, or show.",
+      "image": "images/actor.svg",
+      "imageAlt": "Theatre masks representing an actor",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/05_actor.wav"
+    },
+    {
+      "index": 6,
+      "word": "terror",
+      "audio": "audio/06_terror.wav",
+      "definition": "A feeling of very great fear.",
+      "image": "images/terror.svg",
+      "imageAlt": "A face showing great fear",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/06_terror.wav"
+    },
+    {
+      "index": 7,
+      "word": "comfort",
+      "audio": "audio/07_comfort.wav",
+      "definition": "A feeling of being safe, calm, and free from pain.",
+      "image": "images/comfort.svg",
+      "imageAlt": "A comfortable sofa",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/07_comfort.wav"
+    },
+    {
+      "index": 8,
+      "word": "senior",
+      "audio": "audio/08_senior.wav",
+      "definition": "An older person, or someone at a higher level.",
+      "image": "images/senior.svg",
+      "imageAlt": "An older person",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/08_senior.wav"
+    },
+    {
+      "index": 9,
+      "word": "razor",
+      "audio": "audio/09_razor.wav",
+      "definition": "A small tool with a sharp blade used for shaving hair.",
+      "image": "images/razor.svg",
+      "imageAlt": "A shaving razor",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/09_razor.wav"
+    },
+    {
+      "index": 10,
+      "word": "mirror",
+      "audio": "audio/10_mirror.wav",
+      "definition": "A smooth surface that shows your reflection.",
+      "image": "images/mirror.svg",
+      "imageAlt": "A standing mirror",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/10_mirror.wav"
+    },
+    {
+      "index": 11,
+      "word": "memory",
+      "audio": "audio/11_memory.wav",
+      "definition": "Something you remember, or the ability to remember.",
+      "image": "images/memory.svg",
+      "imageAlt": "A brain representing memory",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/11_memory.wav"
+    },
+    {
+      "index": 12,
+      "word": "stubborn",
+      "audio": "audio/12_stubborn.wav",
+      "definition": "Not willing to change your mind or do what others ask.",
+      "image": "images/stubborn.svg",
+      "imageAlt": "A person refusing to change their mind",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/12_stubborn.wav"
+    },
+    {
+      "index": 13,
+      "word": "calculator",
+      "audio": "audio/13_calculator.wav",
+      "definition": "A device used to work out numbers.",
+      "image": "images/calculator.svg",
+      "imageAlt": "A calculator",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/13_calculator.wav"
+    },
+    {
+      "index": 14,
+      "word": "visitor",
+      "audio": "audio/14_visitor.wav",
+      "definition": "A person who comes to see a place or another person.",
+      "image": "images/visitor.svg",
+      "imageAlt": "A visitor waving hello",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/14_visitor.wav"
+    },
+    {
+      "index": 15,
+      "word": "collector",
+      "audio": "audio/15_collector.wav",
+      "definition": "A person who gathers and keeps a group of similar things.",
+      "image": "images/collector.svg",
+      "imageAlt": "A box holding collected things",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/15_collector.wav"
+    },
+    {
+      "index": 16,
+      "word": "escalator",
+      "audio": "audio/16_escalator.wav",
+      "definition": "Moving stairs that carry people up or down.",
+      "image": "images/escalator.jpg",
+      "imageAlt": "An escalator next to a flight of stairs",
+      "imageCredit": {
+        "name": "LOMT8282 / Wikimedia Commons",
+        "url": "https://commons.wikimedia.org/wiki/File:Escalator_and_stairs.jpg",
+        "license": "CC BY 4.0"
+      },
+      "definitionAudio": "audio/definitions/16_escalator.wav"
+    },
+    {
+      "index": 17,
+      "word": "decoration",
+      "audio": "audio/17_decoration.wav",
+      "definition": "Something used to make a place or object look nicer.",
+      "image": "images/decoration.svg",
+      "imageAlt": "A colourful balloon decoration",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/17_decoration.wav"
+    },
+    {
+      "index": 18,
+      "word": "opportunity",
+      "audio": "audio/18_opportunity.wav",
+      "definition": "A good chance to do or achieve something.",
+      "image": "images/opportunity.svg",
+      "imageAlt": "An open door representing an opportunity",
+      "imageCredit": {
+        "name": "OpenMoji",
+        "url": "https://openmoji.org/",
+        "license": "CC BY-SA 4.0"
+      },
+      "definitionAudio": "audio/definitions/18_opportunity.wav"
+    }
+  ]
+}

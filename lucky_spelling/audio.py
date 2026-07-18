@@ -40,7 +40,40 @@ def generate_audio_assets(
     reuse_audio: bool = False,
     language: str = "en-US",
 ) -> AudioResult:
-    audio_dir = Path(output_dir) / "audio"
+    return _generate_audio_assets(
+        labels=words,
+        texts=words,
+        audio_dir=Path(output_dir) / "audio",
+        reuse_audio=reuse_audio,
+        language=language,
+    )
+
+
+def generate_learning_audio_assets(
+    definitions: list[tuple[str, str]],
+    output_dir: str | Path,
+    *,
+    reuse_audio: bool = False,
+    language: str = "en-US",
+) -> AudioResult:
+    """Generate one spoken definition per word under audio/definitions/."""
+    return _generate_audio_assets(
+        labels=[word for word, _ in definitions],
+        texts=[definition for _, definition in definitions],
+        audio_dir=Path(output_dir) / "audio" / "definitions",
+        reuse_audio=reuse_audio,
+        language=language,
+    )
+
+
+def _generate_audio_assets(
+    *,
+    labels: list[str],
+    texts: list[str],
+    audio_dir: Path,
+    reuse_audio: bool,
+    language: str,
+) -> AudioResult:
     audio_dir.mkdir(parents=True, exist_ok=True)
 
     suffixes: dict[int, str] = {}
@@ -48,33 +81,33 @@ def generate_audio_assets(
     generated: list[str] = []
     missing: list[str] = []
     provider_errors: list[str] = []
-    total = len(words)
+    total = len(labels)
 
     providers = _available_providers(language)
     if not providers:
         provider_errors.append("No TTS provider is available. Install edge-tts, gTTS, pyttsx3, or use Windows System.Speech.")
 
-    for index, word in enumerate(words, start=1):
-        stem = safe_audio_stem(index, total, word)
+    for index, (label, spoken_text) in enumerate(zip(labels, texts, strict=True), start=1):
+        stem = safe_audio_stem(index, total, label)
         existing = _find_existing_audio(audio_dir, stem)
         if reuse_audio and existing:
             suffixes[index] = existing.suffix
-            reused.append(word)
+            reused.append(label)
             continue
 
         for provider in providers:
             try:
-                created = provider(word, audio_dir / stem)
+                created = provider(spoken_text, audio_dir / stem)
             except Exception as exc:  # pragma: no cover - provider availability is environment-specific.
                 provider_errors.append(f"{provider.__name__}: {exc}")
                 continue
 
             if created and created.exists() and created.stat().st_size > 0:
                 suffixes[index] = created.suffix
-                generated.append(word)
+                generated.append(label)
                 break
         else:
-            missing.append(word)
+            missing.append(label)
 
     if missing:
         raise AudioGenerationError(missing, provider_errors)
@@ -228,4 +261,3 @@ def _convert_wav_to_mp3_if_possible(wav_path: Path, mp3_path: Path) -> Path:
             pass
         return mp3_path
     return wav_path
-
