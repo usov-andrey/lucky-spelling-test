@@ -87,10 +87,17 @@ def _require_command(command: str) -> None:
 
 
 def _run(args: list[str], *, cwd: Path, check: bool = True) -> subprocess.CompletedProcess[str]:
-    result = subprocess.run(args, cwd=cwd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result = subprocess.run(
+        args,
+        cwd=cwd,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
     if check and result.returncode != 0:
         command = " ".join(args)
         detail = result.stderr.strip() or result.stdout.strip()
         raise DeployError(f"Command failed: {command}\n{detail}")
     return result
-
