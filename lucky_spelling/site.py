@@ -55,7 +55,7 @@ def write_site(
         json_words.append(item)
 
     json_data = {
-        "title": lesson_data.get("title", "Lucky Spelling Test"),
+        "title": lesson_data.get("title", "Spelling Test"),
         "pageLabel": lesson_data.get("pageLabel", ""),
         "topic": lesson_data.get("topic", ""),
         "words": json_words,
@@ -81,7 +81,7 @@ def _archive_previous_lesson(out: Path, new_lesson: dict[str, object]) -> None:
 
     if isinstance(current, list):
         current = {
-            "title": "Lucky Spelling Test",
+            "title": "Spelling Test",
             "pageLabel": "",
             "topic": "",
             "words": current,

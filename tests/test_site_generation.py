@@ -30,6 +30,9 @@ class SiteGenerationTests(unittest.TestCase):
             self.assertIn("Hear the word", html)
             self.assertNotIn("Auto-repeat", html)
             app_js = (out / "app.js").read_text(encoding="utf-8")
+            self.assertNotIn("Lucky", html)
+            self.assertNotIn("Lucky", app_js)
+            self.assertEqual(data["title"], "Spelling Test")
             self.assertIn('chooseMode("learn")', app_js)
             self.assertIn('chooseMode("test")', app_js)
             self.assertIn('state.mode === "learn"', app_js)
@@ -37,6 +40,26 @@ class SiteGenerationTests(unittest.TestCase):
             self.assertIn('lucky-spelling-theme', app_js)
             self.assertEqual(data["words"][0]["audio"], "audio/01_fungus.mp3")
             self.assertEqual(data["words"][1]["word"], "cactus")
+
+    def test_theme_switch_hides_inactive_lineup(self):
+        entries = build_entries(["fungus"])
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            out = Path(temp_dir) / "docs"
+            write_site(out, entries)
+
+            app_js = (out / "app.js").read_text(encoding="utf-8")
+            styles = (out / "styles.css").read_text(encoding="utf-8")
+
+            self.assertIn(
+                'els.pokemonLineup.classList.toggle("is-hidden", !isPokemon)',
+                app_js,
+            )
+            self.assertRegex(
+                styles,
+                r"\.pokemon-lineup\.is-hidden,\s*"
+                r"\.collection-lineup\.is-hidden,[^{]*\{\s*display:\s*none;",
+            )
 
     def test_writes_learning_metadata_and_copies_image(self):
         entries = build_entries(["author"])
@@ -47,7 +70,7 @@ class SiteGenerationTests(unittest.TestCase):
             image_dir.mkdir(parents=True)
             (image_dir / "author.svg").write_text("<svg></svg>", encoding="utf-8")
             lesson = {
-                "title": "Lucky Spelling Test",
+                "title": "Spelling Test",
                 "pageLabel": "Page 22",
                 "topic": "Schwa ‹or›",
                 "words": [{

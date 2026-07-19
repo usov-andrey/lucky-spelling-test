@@ -147,6 +147,7 @@ body[data-theme="ocean"] {
   transform: translateY(-8px);
 }
 
+.pokemon-lineup.is-hidden,
 .collection-lineup.is-hidden,
 .buddy-image.is-hidden,
 .buddy-symbol.is-hidden,

@@ -1,4 +1,4 @@
-const ASSET_VERSION = "settings-20260719-1";
+const ASSET_VERSION = "sharing-20260719-1";
 const LANGUAGE_KEY = "lucky-spelling-language";
 const THEME_KEY = "lucky-spelling-theme";
 
@@ -60,7 +60,7 @@ const COPY = {
     of: "of",
     audioHint: "Tap Hear the word to play the sound.",
     finishEyebrow: "Adventure complete",
-    finishHeading: "Great job, Lucky!",
+    finishHeading: "Great job!",
     learnedAll: "You learned every word!",
     testedAll: "You completed the spelling test!",
     again: "Do it again",
@@ -111,7 +111,7 @@ const COPY = {
     of: "จาก",
     audioHint: "แตะฟังคำศัพท์เพื่อเล่นเสียง",
     finishEyebrow: "จบการผจญภัยแล้ว",
-    finishHeading: "เก่งมาก Lucky!",
+    finishHeading: "เก่งมาก!",
     learnedAll: "คุณเรียนรู้ครบทุกคำแล้ว!",
     testedAll: "คุณทำแบบทดสอบสะกดคำเสร็จแล้ว!",
     again: "ทำอีกครั้ง",
@@ -162,7 +162,7 @@ const COPY = {
     of: "из",
     audioHint: "Нажми «Послушать слово», чтобы включить звук.",
     finishEyebrow: "Приключение завершено",
-    finishHeading: "Отличная работа, Lucky!",
+    finishHeading: "Отличная работа!",
     learnedAll: "Ты выучил(а) все слова!",
     testedAll: "Ты закончил(а) тест по правописанию!",
     again: "Пройти ещё раз",
@@ -274,7 +274,7 @@ async function fetchLesson(path) {
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const data = await response.json();
   if (Array.isArray(data)) {
-    return { title: "Lucky Spelling Test", pageLabel: "", topic: "", words: data };
+    return { title: "Spelling Test", pageLabel: "", topic: "", words: data };
   }
   return data;
 }
@@ -322,14 +322,14 @@ function lessonName(lesson) {
 function renderIntro() {
   if (!state.lesson) return;
   const page = state.lesson.pageLabel ? ` · ${state.lesson.pageLabel}` : "";
-  els.introTitle.textContent = `${state.lesson.title || "Lucky Spelling"}${page}`;
+  els.introTitle.textContent = `${state.lesson.title || "Spelling Test"}${page}`;
   els.introTopic.textContent = state.lesson.topic || t("introTopic");
   showOnly(els.introScreen);
 }
 
 function renderStaticCopy() {
   document.documentElement.lang = state.language;
-  document.title = t("settings") === "Settings" ? "Lucky Spelling Test" : `Lucky Spelling Test · ${t("settings")}`;
+  document.title = t("settings") === "Settings" ? "Spelling Test" : `Spelling Test · ${t("settings")}`;
   els.introEyebrow.textContent = t("chooseAdventure");
   els.chooseLearn.querySelector("strong").textContent = t("learn");
   els.chooseLearn.querySelector("small").textContent = t("learnDesc");
