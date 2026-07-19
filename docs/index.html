@@ -6,21 +6,22 @@
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <title>Lucky Spelling Test</title>
-    <link rel="stylesheet" href="styles.css?v=pokemon-modes-20260718-1">
+    <link rel="stylesheet" href="styles.css?v=settings-20260719-1">
   </head>
   <body>
     <main class="app" aria-live="polite">
       <section id="intro-screen" class="screen intro-screen">
-        <div class="pokemon-lineup" aria-label="Pikachu, Eevee, Bulbasaur, Charmander, and Squirtle">
+        <div id="pokemon-lineup" class="pokemon-lineup" aria-label="Pikachu, Eevee, Bulbasaur, Charmander, and Squirtle">
           <img src="pokemon/bulbasaur.png?v=pokemon-modes-20260718-1" alt="Bulbasaur">
           <img src="pokemon/eevee.png?v=pokemon-modes-20260718-1" alt="Eevee">
           <img class="lineup-star" src="pokemon/pikachu.png?v=pokemon-modes-20260718-1" alt="Pikachu">
           <img src="pokemon/charmander.png?v=pokemon-modes-20260718-1" alt="Charmander">
           <img src="pokemon/squirtle.png?v=pokemon-modes-20260718-1" alt="Squirtle">
         </div>
+        <div id="collection-lineup" class="collection-lineup is-hidden" aria-hidden="true"></div>
 
         <header class="intro-header">
-          <p class="eyebrow">Choose your adventure</p>
+          <p id="intro-eyebrow" class="eyebrow">Choose your adventure</p>
           <h1 id="intro-title">Lucky Spelling</h1>
           <p id="intro-topic" class="intro-topic">Listen, learn, and spell</p>
         </header>
@@ -40,6 +41,40 @@
               <small>Listen and spell without seeing the word</small>
             </span>
           </button>
+          <button id="choose-settings" class="mode-card mode-settings" type="button">
+            <span class="mode-icon" aria-hidden="true">⚙️</span>
+            <span class="mode-copy">
+              <strong>Settings</strong>
+              <small>Choose your lesson, theme, and language</small>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section id="settings-screen" class="screen settings-screen is-hidden">
+        <header class="settings-header">
+          <button id="close-settings" class="quiet-button" type="button">← Back</button>
+          <p id="settings-eyebrow" class="eyebrow">Make it yours</p>
+          <h1 id="settings-title">Settings</h1>
+          <p id="settings-description" class="settings-description">Pick how your spelling adventure looks and sounds.</p>
+        </header>
+
+        <div class="settings-groups">
+          <fieldset class="setting-group">
+            <legend id="lesson-legend">Choose lesson</legend>
+            <div id="lesson-options" class="choice-grid" aria-describedby="lesson-note"></div>
+            <p id="lesson-note" class="setting-note">The lesson resets to the current lesson when you open the app again.</p>
+          </fieldset>
+
+          <fieldset class="setting-group">
+            <legend id="theme-legend">Choose theme</legend>
+            <div id="theme-options" class="choice-grid theme-choices"></div>
+          </fieldset>
+
+          <fieldset class="setting-group">
+            <legend id="language-legend">Choose language</legend>
+            <div id="language-options" class="choice-grid language-choices"></div>
+          </fieldset>
         </div>
       </section>
 
@@ -55,6 +90,7 @@
             <h1 id="practice-heading">Learn the word</h1>
           </div>
           <img id="buddy-image" class="buddy-image" src="pokemon/pikachu.png?v=pokemon-modes-20260718-1" alt="Pikachu">
+          <div id="buddy-symbol" class="buddy-symbol is-hidden" aria-hidden="true"></div>
         </div>
 
         <div class="word-card">
@@ -62,7 +98,7 @@
           <p id="word" class="word"></p>
           <button id="repeat" class="listen-button" type="button">
             <span aria-hidden="true">🔊</span>
-            <span>Hear the word</span>
+            <span id="repeat-label">Hear the word</span>
           </button>
         </div>
 
@@ -76,9 +112,10 @@
       </section>
 
       <section id="finish-screen" class="screen finish-screen is-hidden">
-        <img class="finish-pokemon" src="pokemon/jigglypuff.png?v=pokemon-modes-20260718-1" alt="Jigglypuff">
-        <p class="eyebrow">Adventure complete</p>
-        <h1>Great job, Lucky!</h1>
+        <img id="finish-pokemon" class="finish-pokemon" src="pokemon/jigglypuff.png?v=pokemon-modes-20260718-1" alt="Jigglypuff">
+        <div id="finish-symbol" class="finish-symbol is-hidden" aria-hidden="true"></div>
+        <p id="finish-eyebrow" class="eyebrow">Adventure complete</p>
+        <h1 id="finish-heading">Great job, Lucky!</h1>
         <p id="finish-message" class="finish-message">You finished all the words.</p>
         <ol id="word-list" class="word-list"></ol>
         <div class="finish-actions">
@@ -90,7 +127,7 @@
       <dialog id="learn-dialog" class="learn-dialog" aria-labelledby="learn-word">
         <div class="learn-card">
           <button id="close-learn" class="close-learn" type="button" aria-label="Close meaning card">×</button>
-          <p class="eyebrow">Word meaning</p>
+          <p id="meaning-eyebrow" class="eyebrow">Word meaning</p>
           <h2 id="learn-word"></h2>
           <img id="learn-image" class="learn-image" alt="">
           <p id="learn-definition" class="learn-definition"></p>
@@ -100,7 +137,7 @@
       </dialog>
     </main>
 
-    <footer class="legal-note">Pokémon images © Nintendo / Creatures / GAME FREAK.</footer>
-    <script src="app.js?v=pokemon-modes-20260718-1"></script>
+    <footer id="legal-note" class="legal-note">Pokémon images © Nintendo / Creatures / GAME FREAK.</footer>
+    <script src="app.js?v=settings-20260719-1"></script>
   </body>
 </html>

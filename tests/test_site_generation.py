@@ -24,6 +24,8 @@ class SiteGenerationTests(unittest.TestCase):
             self.assertTrue((out / "pokemon" / "pikachu.png").exists())
             self.assertIn('id="choose-learn"', html)
             self.assertIn('id="choose-test"', html)
+            self.assertIn('id="choose-settings"', html)
+            self.assertIn('id="settings-screen"', html)
             self.assertIn("What does it mean?", html)
             self.assertIn("Hear the word", html)
             self.assertNotIn("Auto-repeat", html)
@@ -31,6 +33,8 @@ class SiteGenerationTests(unittest.TestCase):
             self.assertIn('chooseMode("learn")', app_js)
             self.assertIn('chooseMode("test")', app_js)
             self.assertIn('state.mode === "learn"', app_js)
+            self.assertIn('lucky-spelling-language', app_js)
+            self.assertIn('lucky-spelling-theme', app_js)
             self.assertEqual(data["words"][0]["audio"], "audio/01_fungus.mp3")
             self.assertEqual(data["words"][1]["word"], "cactus")
 
@@ -69,6 +73,27 @@ class SiteGenerationTests(unittest.TestCase):
             self.assertEqual(data["words"][0]["definition"], "A person who writes books.")
             self.assertEqual(data["words"][0]["definitionAudio"], "audio/definitions/01_author.wav")
             self.assertTrue((out / "images" / "author.svg").exists())
+
+    def test_archives_replaced_lesson_as_previous(self):
+        entries = build_entries(["author", "error"])
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            out = Path(temp_dir) / "docs"
+            out.mkdir()
+            (out / "words.json").write_text(
+                json.dumps([
+                    {"index": 1, "word": "fungus", "audio": "audio/01_fungus.wav"},
+                    {"index": 2, "word": "cactus", "audio": "audio/02_cactus.wav"},
+                ]),
+                encoding="utf-8",
+            )
+
+            write_site(out, entries)
+
+            previous = json.loads(
+                (out / "lessons" / "previous.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual([item["word"] for item in previous["words"]], ["fungus", "cactus"])
 
 
 if __name__ == "__main__":

@@ -60,11 +60,50 @@ def write_site(
         "topic": lesson_data.get("topic", ""),
         "words": json_words,
     }
+    _archive_previous_lesson(out, json_data)
     (out / "words.json").write_text(
         json.dumps(json_data, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     write_words_file(out / "words.txt", [entry.word for entry in entries])
+
+
+def _archive_previous_lesson(out: Path, new_lesson: dict[str, object]) -> None:
+    """Keep the replaced lesson available without making it the next default."""
+    current_path = out / "words.json"
+    if not current_path.exists():
+        return
+
+    try:
+        current = json.loads(current_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return
+
+    if isinstance(current, list):
+        current = {
+            "title": "Lucky Spelling Test",
+            "pageLabel": "",
+            "topic": "",
+            "words": current,
+        }
+    if not isinstance(current, dict) or not isinstance(current.get("words"), list):
+        return
+
+    old_words = [str(item.get("word", "")).lower() for item in current["words"] if isinstance(item, dict)]
+    new_words = [
+        str(item.get("word", "")).lower()
+        for item in new_lesson.get("words", [])
+        if isinstance(item, dict)
+    ]
+    if not old_words or old_words == new_words:
+        return
+
+    lessons_dir = out / "lessons"
+    lessons_dir.mkdir(exist_ok=True)
+    (lessons_dir / "previous.json").write_text(
+        json.dumps(current, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
 
 def _copy_lesson_image(

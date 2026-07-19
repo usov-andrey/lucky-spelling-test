@@ -75,6 +75,8 @@ python -m http.server 8000 --directory docs
 
 Откройте `http://localhost:8000`.
 
+На Windows тот же preview можно запустить двойным кликом по `start-preview.bat` в корне проекта. Окно сервера нужно оставить открытым; для остановки нажмите `Ctrl+C`.
+
 ## Создать тест из фото
 
 MVP умеет пробовать OCR, если установлены optional OCR-зависимости:
